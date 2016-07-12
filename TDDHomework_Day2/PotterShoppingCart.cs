@@ -25,7 +25,8 @@ namespace TDDHomework_Day2
 
         public object CalculateTotalAmount()
         {
-            throw new NotImplementedException();
+            var ep1Count = Cart.First(item => item.Key == "episode1").Value;
+            return ep1Count * Price;
         }
     }
 
