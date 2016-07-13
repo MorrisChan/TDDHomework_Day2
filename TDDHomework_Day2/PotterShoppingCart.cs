@@ -27,7 +27,6 @@ namespace TDDHomework_Day2
 
         public object CalculateTotalAmount()
         {
-            //var countByBook = Cart.Count();
             double totalAmount = 0;
 
             var buyCounts = Cart.Select(a => a.Value);
