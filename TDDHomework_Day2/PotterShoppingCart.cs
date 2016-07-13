@@ -11,7 +11,7 @@ namespace TDDHomework_Day2
         private int Price = 100;
         private List<double> Discount = new List<double>
         {
-            0, 1, 0.95, 0.9
+            0, 1, 0.95, 0.9, 0.8
         };
         public void Add(string episode, int buyCount)
         {
