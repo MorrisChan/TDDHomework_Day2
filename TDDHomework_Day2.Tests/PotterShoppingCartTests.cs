@@ -12,7 +12,7 @@ namespace TDDHomework_Day2.Tests
             //arrange
             var target = new PotterShoppingCart();
             target.Add("episode1", 1);
-            var expected = 100;
+            double expected = 100;
             //actual
             var actual = target.CalculateTotalAmount();
             //assert
