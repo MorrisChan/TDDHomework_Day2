@@ -27,12 +27,31 @@ namespace TDDHomework_Day2
 
         public object CalculateTotalAmount()
         {
-            var countByBook = Cart.Count();
+            //var countByBook = Cart.Count();
             double totalAmount = 0;
 
-            foreach (var item in Cart)
+            var buyCounts = Cart.Select(a => a.Value);
+            var maxCount = Cart.Max(a => a.Value);
+            IEnumerable<int> excess = null;
+            //取出目前最大數量
+            //依數量跑迴圈，算出當下集數組合計算金額，
+            //計算剩餘未計算數量後，紀錄在excess中
+            while (maxCount > 0)
             {
-                totalAmount += item.Value * Price * Discount[countByBook];
+                //第一次計算直接取出各集數數量
+                if (excess == null) excess = buyCounts.Select(v => v);
+                //算出目前有幾種書
+                var countByBook = excess.Count(v => v > 0);
+
+                for (int i = 0; i < countByBook; i++)
+                {
+                    //每種都取出一本計算折扣後金額，加總在totalAmount  
+                    totalAmount += 1 * Price * Discount[countByBook];
+                }
+
+                //記錄未計算的數量
+                excess = buyCounts.Select(v => v - 1).Where(v => v > 0);
+                maxCount--;
             }
 
             return totalAmount;
