@@ -81,7 +81,7 @@ namespace TDDHomework_Day2.Tests
         }
 
         [TestMethod]
-        public void Buy_Harry_Potter_Episode_1_2_and_2_Episode3_TotalAmount_should_be_370()
+        public void Buy_Harry_Potter_Episode_1_2_and_two_Episode3_TotalAmount_should_be_370()
         {
             //arrange
             var target = new PotterShoppingCart();
@@ -89,6 +89,21 @@ namespace TDDHomework_Day2.Tests
             target.Add("episode2", 1);
             target.Add("episode3", 2);
             double expected = 370;
+            //actual
+            var actual = target.CalculateTotalAmount();
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Buy_Harry_Potter_one_Episode1_and_two_Episode2_Episode3_TotalAmount_should_be_460()
+        {
+            //arrange
+            var target = new PotterShoppingCart();
+            target.Add("episode1", 1);
+            target.Add("episode2", 2);
+            target.Add("episode3", 2);
+            double expected = 460;
             //actual
             var actual = target.CalculateTotalAmount();
             //assert
