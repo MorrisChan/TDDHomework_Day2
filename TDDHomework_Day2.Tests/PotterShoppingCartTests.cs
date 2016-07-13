@@ -46,5 +46,21 @@ namespace TDDHomework_Day2.Tests
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Buy_a_Harry_Potter_Episode_1_2_3_4_TotalAmount_should_be_320()
+        {
+            //arrange
+            var target = new PotterShoppingCart();
+            target.Add("episode1", 1);
+            target.Add("episode2", 1);
+            target.Add("episode3", 1);
+            target.Add("episode4", 1);
+            double expected = 320;
+            //actual
+            var actual = target.CalculateTotalAmount();
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
