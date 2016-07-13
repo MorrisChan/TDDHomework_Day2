@@ -9,8 +9,10 @@ namespace TDDHomework_Day2
     {
         private Dictionary<string, int> Cart = new Dictionary<string, int>();
         private int Price = 100;
-
-
+        private List<double> Discount = new List<double>
+        {
+            0, 1 , 0.95
+        };
         public void Add(string episode, int buyCount)
         {
             if(Cart.Any(a => a.Key == episode))
@@ -25,8 +27,15 @@ namespace TDDHomework_Day2
 
         public object CalculateTotalAmount()
         {
-            var ep1Count = Cart.First(item => item.Key == "episode1").Value;
-            return ep1Count * Price;
+            var countByBook = Cart.Count();
+            double totalAmount = 0;
+
+            foreach (var item in Cart)
+            {
+                totalAmount += item.Value * Price * Discount[countByBook];
+            }
+
+            return totalAmount;
         }
     }
 
